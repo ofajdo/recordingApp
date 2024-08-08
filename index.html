@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>データ</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
+    integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+  <div>
+    <div>
+      <select id="fromYear"></select>
+      <select id="fromMonth"></select>
+      <select id="fromDay"></select>
+      <select id="fromHour"></select>
+      <select id="fromMinute"></select>
+    </div>
+
+    <div>
+      <select id="toYear"></select>
+      <select id="toMonth"></select>
+      <select id="toDay"></select>
+      <select id="toHour"></select>
+      <select id="toMinute"></select>
+    </div>
+
+    <button id="jump">登録</button>
+  </div>
+
+  <div>
+    <canvas id="discomfort"></canvas>
+    <canvas id="everyD"></canvas>
+    <canvas id="temperature"></canvas>
+    <canvas id="everyT"></canvas>
+    <canvas id="humidity"></canvas>
+    <canvas id="everyH"></canvas>
+  </div>
+
+  <main class="main">
+    <div class="detail">
+      <h1>センサー1</h1>
+      <h2>不快指数</h2>
+      <canvas id="discomfort1"></canvas>
+      <div id="analysisD1"></div>
+      <canvas id="barD1"></canvas>
+      <canvas id="everyD1"></canvas>
+      <h2>温度</h2>
+      <canvas id="temperature1"></canvas>
+      <div id="analysisT1"></div>
+      <canvas id="barT1"></canvas>
+      <canvas id="everyT1"></canvas>
+      <h2>湿度</h2>
+      <canvas id="humidity1"></canvas>
+      <div id="analysisH1"></div>
+      <canvas id="barH1"></canvas>
+      <canvas id="everyH1"></canvas>
+      <table id="table1"></table>
+    </div>
+
+    <div class="detail">
+      <h1>センサー2</h1>
+      <h2>不快指数</h2>
+      <canvas id="discomfort2"></canvas>
+      <div id="analysisD2"></div>
+      <canvas id="barD2"></canvas>
+      <canvas id="everyD2"></canvas>
+      <h2>温度</h2>
+      <canvas id="temperature2"></canvas>
+      <div id="analysisT2"></div>
+      <canvas id="barT2"></canvas>
+      <canvas id="everyT2"></canvas>
+      <h2>湿度</h2>
+      <canvas id="humidity2"></canvas>
+      <div id="analysisH2"></div>
+      <canvas id="barH2"></canvas>
+      <canvas id="everyH2"></canvas>
+      <table id="table2"></table>
+    </div>
+  </main>
+
+  <script src="./acquisition.js"></script>
+</body>
