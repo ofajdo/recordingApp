@@ -30,5 +30,5 @@ def measure(device, path):
     except Exception as error:
         Device(device).exit()
 
-measure(board.D4, "/home/kiuchiryou/recordingApp/log1.csv")
-measure(board.D18, "/home/kiuchiryou/recordingApp/log2.csv")
+measure(board.D4, "./log1.csv")
+measure(board.D18, "./log2.csv")
