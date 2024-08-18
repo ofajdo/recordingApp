@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
           info.period,
           index
         );
-        match.push(organize);
 
         const everyArray = {
           temperature: Every(organize.temperature, organize.date),
@@ -21,7 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
           id: index + 1,
         };
 
-        every.push(everyArray);
+        if (info.match) {
+          match.push(organize);
+          every.push(everyArray);
+        }
 
         Table(organize, info.output.table);
         Line(organize, info.output.line, 0);
@@ -477,6 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
   GetCsv([
     {
       path: "./log1.csv",
+      match: true,
       period: {
         from: { get: url.searchParams.get("From") },
         to: { get: url.searchParams.get("To") },
@@ -507,6 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       path: "./log2.csv",
+      match: true,
       period: {
         from: { get: url.searchParams.get("From"), display: timeSetting.from },
         to: { get: url.searchParams.get("To"), display: timeSetting.to },
@@ -532,6 +536,37 @@ document.addEventListener("DOMContentLoaded", () => {
           temperature: document.getElementById("analysisT2"),
           humidity: document.getElementById("analysisH2"),
           discomfort: document.getElementById("analysisD2"),
+        },
+      },
+    },
+    {
+      path: "./diff.csv",
+      match: false,
+      period: {
+        from: { get: url.searchParams.get("From"), display: timeSetting.from },
+        to: { get: url.searchParams.get("To"), display: timeSetting.to },
+      },
+      output: {
+        table: document.getElementById("tableD"),
+        every: {
+          temperature: document.getElementById("everyTD"),
+          humidity: document.getElementById("everyHD"),
+          discomfort: document.getElementById("everyDD"),
+        },
+        line: {
+          temperature: document.getElementById("temperatureD"),
+          humidity: document.getElementById("humidityD"),
+          discomfort: document.getElementById("discomfortD"),
+        },
+        bar: {
+          temperature: document.getElementById("barTD"),
+          humidity: document.getElementById("barHD"),
+          discomfort: document.getElementById("barDD"),
+        },
+        analysis: {
+          temperature: document.getElementById("analysisTD"),
+          humidity: document.getElementById("analysisHD"),
+          discomfort: document.getElementById("analysisDD"),
         },
       },
     },

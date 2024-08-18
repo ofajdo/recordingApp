@@ -10,6 +10,7 @@ def Device(port):
 
 def measure(device, path):
     dt_now = datetime.datetime.now().strftime("%Y/%m/%d %H:%M")
+    result = []
     try:
         temperature = Device(device).temperature
         humidity = Device(device).humidity
@@ -23,14 +24,14 @@ def measure(device, path):
         with open(path, 'a') as file:
             writer = csv.writer(file)
             writer.writerow(result)
-
-        return([temperature, humidity, discomfort])
+        return([result[1],result[2],result[3]])
     except RuntimeError as error:
         time.sleep(0.1)
-        measure(device, path)
         print(error.args[0])
+        return measure(device, path)
     except Exception as error:
         Device(device).exit()
+
 
 def diff(value1, value2, path):
     dt_now = datetime.datetime.now().strftime("%Y/%m/%d %H:%M")
