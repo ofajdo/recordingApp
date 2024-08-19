@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Table(organize, info.output.table);
         Line(organize, info.output.line, 0);
         Line(everyArray, info.output.every, 2);
-        Bar(organize.round, info.output.bar);
+        if (info.bar) Bar(organize.round, info.output.bar);
         Analysis(organize.temperature, info.output.analysis.temperature);
         Analysis(organize.humidity, info.output.analysis.humidity);
         Analysis(organize.discomfort, info.output.analysis.discomfort);
@@ -480,6 +480,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       path: "./log1.csv",
       match: true,
+      bar: true,
       period: {
         from: { get: url.searchParams.get("From") },
         to: { get: url.searchParams.get("To") },
@@ -511,6 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       path: "./log2.csv",
       match: true,
+      bar: true,
       period: {
         from: { get: url.searchParams.get("From"), display: timeSetting.from },
         to: { get: url.searchParams.get("To"), display: timeSetting.to },
@@ -542,6 +544,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       path: "./diff.csv",
       match: false,
+      bar: false,
       period: {
         from: { get: url.searchParams.get("From"), display: timeSetting.from },
         to: { get: url.searchParams.get("To"), display: timeSetting.to },
@@ -557,11 +560,6 @@ document.addEventListener("DOMContentLoaded", () => {
           temperature: document.getElementById("temperatureD"),
           humidity: document.getElementById("humidityD"),
           discomfort: document.getElementById("discomfortD"),
-        },
-        bar: {
-          temperature: document.getElementById("barTD"),
-          humidity: document.getElementById("barHD"),
-          discomfort: document.getElementById("barDD"),
         },
         analysis: {
           temperature: document.getElementById("analysisTD"),
