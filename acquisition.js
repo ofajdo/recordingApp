@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         Table(organize, info.output.table);
         Line(organize, info.output.line, 0);
-        Line(everyArray, info.output.every, 2);
+        Line(everyArray, info.output.every, 1);
         if (info.bar) Bar(organize.round, info.output.bar);
         Analysis(organize.temperature, info.output.analysis.temperature);
         Analysis(organize.humidity, info.output.analysis.humidity);

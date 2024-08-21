@@ -1,7 +1,142 @@
-.main {
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 400;
+  color: #333;
+  text-decoration: none;
+}
+
+select {
+  background-color: #f3f3f3ff;
+  border-radius: 0;
+  border: none;
+  padding: 5px;
+  margin: 2px;
+  text-align: center;
+}
+
+button {
+  background-color: #00c6ffff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  width: 90%;
+  max-width: 150px;
+  border-radius: 17px;
+  height: 34px;
+  margin: 10px 0;
+}
+
+.time-setting {
+  padding: 10px 0;
+  width: 100%;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.table-contents {
+  display: flex;
+  justify-content: center;
+}
+
+.from,
+.to {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.from-to {
+  width: 1px;
+  background-color: #333;
+  height: 25px;
+}
+
+h2 {
+  font-size: 20px;
+  border-bottom: solid #333 1px;
+  padding: 0 5px;
+  margin: 20px 5px;
+  width: calc(100%-10px);
+}
+
+.info {
+  padding: 5px;
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+h3 {
+  margin: 5px;
+  padding: 5px;
+  background-color: #f3f3f3ff;
+  width: calc(100%-10px);
+}
+
+h1 {
+  font-size: 24px;
+  background-color: #00c6ffff;
+  padding: 20px;
+  color: #fff;
+  font-weight: 600;
+  margin: 20px 5px;
+  width: calc(100%-10px);
+}
+
+.division {
+  display: flex;
+}
+
+.side div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.none {
+  display: none;
 }
 
 .detail {
   width: 100%;
+}
+
+.top {
+  font-size: 20px;
+  line-height: 40px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  background-color: #00c6ffff;
+  color: #fff;
+  border-radius: 50%;
+  display: block;
+  position: fixed;
+  margin: 30px;
+  right: 0;
+  bottom: 0;
+}
+
+.check:has(.tdis:not(.tdis[type="checkbox"]:checked)) .t {
+  display: none;
+}
+
+.side p {
+  margin: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .division {
+    display: block;
+  }
+
+  .detail {
+    width: auto;
+    padding: 0;
+  }
 }

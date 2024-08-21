@@ -10,18 +10,25 @@
     crossorigin="anonymous"
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"
+    rel="stylesheet"
+  />
 </head>
-<body>
-  <div>
-    <div>
+<body id="top">
+  <a class="top" href="#top">▲</a>
+  <div class="time-setting">
+    <div class="from">
       <select id="fromYear"></select>
       <select id="fromMonth"></select>
       <select id="fromDay"></select>
       <select id="fromHour"></select>
       <select id="fromMinute"></select>
     </div>
-
-    <div>
+    <div class="from-to"></div>
+    <div class="to">
       <select id="toYear"></select>
       <select id="toMonth"></select>
       <select id="toDay"></select>
@@ -32,72 +39,180 @@
     <button id="jump">登録</button>
   </div>
 
-  <div>
-    <canvas id="discomfort"></canvas>
-    <canvas id="everyD"></canvas>
-    <canvas id="temperature"></canvas>
-    <canvas id="everyT"></canvas>
-    <canvas id="humidity"></canvas>
-    <canvas id="everyH"></canvas>
-    <h2>不快指数</h2>
-    <canvas id="discomfortD"></canvas>
-    <div id="analysisDD"></div>
-    <canvas id="barDD"></canvas>
-    <canvas id="everyDD"></canvas>
-    <h2>温度</h2>
-    <canvas id="temperatureD"></canvas>
-    <div id="analysisTD"></div>
-    <canvas id="barTD"></canvas>
-    <canvas id="everyTD"></canvas>
-    <h2>湿度</h2>
-    <canvas id="humidityD"></canvas>
-    <div id="analysisHD"></div>
-    <canvas id="barHD"></canvas>
-    <canvas id="everyHD"></canvas>
+  <div class="info">
+    <div class="table-contents">
+      <ol class="table">
+        <li><a href="#0">室内と外</a></li>
+        <ul>
+          <li><a href="#0.0">不快指数</a></li>
+          <li><a href="#0.1">温度</a></li>
+          <li><a href="#0.2">湿度</a></li>
+        </ul>
+        <li><a href="#1">外と室内の差</a></li>
+        <ul>
+          <li><a href="#1.0">不快指数差</a></li>
+          <li><a href="#1.1">温度差</a></li>
+          <li><a href="#1.2">湿度差</a></li>
+        </ul>
+        <li><a href="#2">センサー1（室内）</a></li>
+        <ul>
+          <li><a href="#2.0">不快指数</a></li>
+          <li><a href="#2.1">温度</a></li>
+          <li><a href="#2.2">湿度</a></li>
+        </ul>
+        <li><a href="#3">センサー2（外）</a></li>
+        <ul>
+          <li><a href="#3.0">不快指数</a></li>
+          <li><a href="#3.1">温度</a></li>
+          <li><a href="#3.2">湿度</a></li>
+        </ul>
+      </ol>
+    </div>
+
+    <h1 id="0">室内と外</h1>
+
+    <div>
+      <h2 id="0.0">不快指数</h2>
+      <h3>不快指数</h3>
+      <canvas id="discomfort"></canvas>
+      <h3>一時間ごとの平均</h3>
+      <canvas id="everyD"></canvas>
+      <h2 id="0.1">温度</h2>
+      <h3>温度</h3>
+      <canvas id="temperature"></canvas>
+      <h3>一時間ごとの平均</h3>
+      <canvas id="everyT"></canvas>
+      <h2 id="0.2">湿度</h2>
+      <h3>湿度</h3>
+      <canvas id="humidity"></canvas>
+      <h3>一時間ごとの平均</h3>
+      <canvas id="everyH"></canvas>
+    </div>
+
+    <h1 id="1">外の室内の差</h1>
+
+    <div>
+      <h2 id="1.0">不快指数差</h2>
+      <div class="division">
+        <div class="detail">
+          <h3>グラフ</h3>
+          <canvas id="discomfortD"></canvas>
+        </div>
+        <div class="detail">
+          <h3>一時間ごとの平均</h3>
+          <canvas id="everyDD"></canvas>
+        </div>
+      </div>
+      <h3>代表値</h3>
+      <div id="analysisDD" class="side"></div>
+      <h2 id="1.1">温度差</h2>
+      <div class="division">
+        <div class="detail">
+          <h3>グラフ</h3>
+          <canvas id="temperatureD"></canvas>
+        </div>
+        <div class="detail">
+          <h3>一時間ごとの平均</h3>
+          <canvas id="everyTD"></canvas>
+        </div>
+      </div>
+      <h3>代表値</h3>
+      <div id="analysisTD" class="side"></div>
+      <h2 id="1.2">湿度差</h2>
+      <div class="division">
+        <div class="detail">
+          <h3>グラフ</h3>
+          <canvas id="humidityD"></canvas>
+        </div>
+        <div class="detail">
+          <h3>一時間ごとの平均</h3>
+          <canvas id="everyHD"></canvas>
+        </div>
+      </div>
+      <h3>代表値</h3>
+      <div id="analysisHD" class="side"></div>
+      <div class="check">
+        <h3>
+          <input type="checkbox" name="tableD" class="tdis" />
+          <label for="tableD">すべてのデータ</label>
+        </h3>
+        <table id="tableD" class="t"></table>
+      </div>
+    </div>
+
+    <main class="division">
+      <div class="detail">
+        <h1 id="2">センサー1（室内）</h1>
+        <h2 id="2.0">不快指数</h2>
+        <canvas id="discomfort1"></canvas>
+        <h3>一時間ごとの平均</h3>
+        <canvas id="everyD1"></canvas>
+        <h3>ヒストグラム</h3>
+        <canvas id="barD1"></canvas>
+        <h3>代表値</h3>
+        <div id="analysisD1" class="side"></div>
+        <h2 id="2.1">温度</h2>
+        <canvas id="temperature1"></canvas>
+        <h3>一時間ごとの平均</h3>
+        <canvas id="everyT1"></canvas>
+        <h3>ヒストグラム</h3>
+        <canvas id="barT1"></canvas>
+        <h3>代表値</h3>
+        <div id="analysisT1" class="side"></div>
+        <h2 id="2.2">湿度</h2>
+        <canvas id="humidity1"></canvas>
+        <h3>一時間ごとの平均</h3>
+        <canvas id="everyH1"></canvas>
+        <h3>ヒストグラム</h3>
+        <canvas id="barH1"></canvas>
+        <h3>代表値</h3>
+        <div id="analysisH1" class="side"></div>
+        <div class="check">
+          <h3>
+            <input type="checkbox" name="table1" class="tdis" />
+            <label for="table1">すべてのデータ</label>
+          </h3>
+          <table id="table1" class="t"></table>
+        </div>
+      </div>
+
+      <div class="detail">
+        <h1 id="3">センサー2（外）</h1>
+        <h3>不快指数</h3>
+        <canvas id="discomfort2"></canvas>
+        <h3>一時間ごとの平均</h3>
+        <canvas id="everyD2"></canvas>
+        <h3>ヒストグラム</h3>
+        <canvas id="barD2"></canvas>
+        <h3>代表値</h3>
+        <div id="analysisD2" class="side"></div>
+        <h2 id="3.1">温度</h2>
+        <canvas id="temperature2"></canvas>
+        <h3>一時間ごとの平均</h3>
+        <canvas id="everyT2"></canvas>
+        <h3>ヒストグラム</h3>
+        <canvas id="barT2"></canvas>
+        <h3>代表値</h3>
+        <div id="analysisT2" class="side"></div>
+        <h2 id="3.2">湿度</h2>
+        <canvas id="humidity2"></canvas>
+        <h3>一時間ごとの平均</h3>
+        <canvas id="everyH2"></canvas>
+        <h3>ヒストグラム</h3>
+        <canvas id="barH2"></canvas>
+        <h3>代表値</h3>
+        <div id="analysisH2" class="side"></div>
+        <div class="check">
+          <h3>
+            <input type="checkbox" name="table2" class="tdis" />
+            <label for="table2">すべてのデータ</label>
+          </h3>
+          <table id="table2" class="t"></table>
+        </div>
+      </div>
+    </main>
   </div>
 
-  <main class="main">
-    <div class="detail">
-      <h1>センサー1</h1>
-      <h2>不快指数</h2>
-      <canvas id="discomfort1"></canvas>
-      <div id="analysisD1"></div>
-      <canvas id="barD1"></canvas>
-      <canvas id="everyD1"></canvas>
-      <h2>温度</h2>
-      <canvas id="temperature1"></canvas>
-      <div id="analysisT1"></div>
-      <canvas id="barT1"></canvas>
-      <canvas id="everyT1"></canvas>
-      <h2>湿度</h2>
-      <canvas id="humidity1"></canvas>
-      <div id="analysisH1"></div>
-      <canvas id="barH1"></canvas>
-      <canvas id="everyH1"></canvas>
-      <table id="table1"></table>
-    </div>
-
-    <div class="detail">
-      <h1>センサー2</h1>
-      <h2>不快指数</h2>
-      <canvas id="discomfort2"></canvas>
-      <div id="analysisD2"></div>
-      <canvas id="barD2"></canvas>
-      <canvas id="everyD2"></canvas>
-      <h2>温度</h2>
-      <canvas id="temperature2"></canvas>
-      <div id="analysisT2"></div>
-      <canvas id="barT2"></canvas>
-      <canvas id="everyT2"></canvas>
-      <h2>湿度</h2>
-      <canvas id="humidity2"></canvas>
-      <div id="analysisH2"></div>
-      <canvas id="barH2"></canvas>
-      <canvas id="everyH2"></canvas>
-      <table id="table2"></table>
-    </div>
-  </main>
-  <table id="tableD"></table>
-
   <script src="./acquisition.js"></script>
+  <script src="./display.js"></script>
 </body>
