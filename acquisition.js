@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
               discomfort: document.getElementById("everyD"),
             },
             everyArray,
-            3
+            1
           );
         }
       });
